@@ -24,6 +24,5 @@ function renderNav(num) {
             }
         }
     })
-    
 }
 

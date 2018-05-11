@@ -2,6 +2,9 @@ const folders = document.querySelector('.folders');
 const fEmpty = document.querySelector('.f-empty');
 const checkAll = document.querySelector('#checkedAll');
 render(0);  //初始化
+window.onmousemove = function (ev) {
+    ev.preventDefault();  //阻止拖拽选中的默认行为
+}
 
 //根据数据渲染文件夹
 function render(num) {

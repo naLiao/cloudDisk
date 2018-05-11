@@ -545,7 +545,7 @@ html,body{
     width: 200px;
     left: 50%;
     margin-left: -100px;
-	/* transition:.3s; */
+	 transition:.3s;
 	background: #00BFFF;
 	color: #fff;
 	height: 40px;
@@ -554,7 +554,7 @@ html,body{
 .full-tip {
     display: inline-block;
     border-radius: 0 0 3px 3px;
-    background: #fff;
+    background: #00BFFF;
 }
 
 .full-tip .inner {

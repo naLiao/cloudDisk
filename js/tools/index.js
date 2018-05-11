@@ -13,6 +13,22 @@ let t = {
             return false;
         }
     },
+    getChilds(num){
+        let newArr = [];
+        add(num);
+        function add(tt) {
+            let childs = t.getChild(tt);
+            if(childs){
+                newArr = newArr.concat(childs);
+                childs.forEach(e=>{
+                    add(e.id);
+                })
+            }else{
+                return;
+            }
+        }
+        return newArr;
+    },
     getParent(num){
         if(num==0){
             return null;

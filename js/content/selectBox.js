@@ -1,10 +1,12 @@
 //框选
 const folderContent = document.querySelector('.folder-content');
 const section1 = document.getElementById('section');
+
 folders.onmousedown = function (ev) {
     if(ev.target.className !== 'folders') return;
     let bX = ev.pageX;
     let bY = ev.pageY;
+    // console.log(bY);
 
     let div = document.createElement('div');  //创建框
     div.className = 'kuang';
@@ -13,10 +15,6 @@ folders.onmousedown = function (ev) {
     const divs = folders.getElementsByClassName('file-item');
     let len = divs.length;
     let arr = t.getChild(0);
-    let selectedArr = [];
-    for(let i=0;i<len;i++){
-        selectedArr.push(data[divs[i].id]);
-    }
 
     document.addEventListener('mousemove',move);
     document.addEventListener('mouseup',up);
@@ -39,9 +37,8 @@ folders.onmousedown = function (ev) {
             divs[i].className = 'file-item';
             divs[i].className += onOff? ' hov':'';
             divs[i].getElementsByTagName('i')[0].className = onOff?'checked':'';
-            checkAll.className = selectedArr.every(e=>e.checked) ? 'checked':'';
+            checkAll.className = arr.every(e=>e.checked) ? 'checked':'';
         }
-
         ev.preventDefault();  //阻止选中的默认行为
     }
     function up(ev) {
@@ -49,5 +46,4 @@ folders.onmousedown = function (ev) {
         document.removeEventListener('mousemove',move);
         document.removeEventListener('mouseup',up);
     }
-    ev.preventDefault();
 }
