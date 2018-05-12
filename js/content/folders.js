@@ -18,6 +18,7 @@ function render(num) {
     if(!arr){  //当前元素没有子集
         // console.log('空');
         fEmpty.style.display = 'block';
+        checkAll.className = '';
         checkAll.onclick = null;
         return;
     }

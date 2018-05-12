@@ -300,16 +300,13 @@ html,body{
 	margin-top:8px;
 	margin-left:12px;
 }
-.tree-ico i{
+.tree-title i.close{
 	background: url(../img/folder_jt1.png) no-repeat 4px 4px;;
 }
-.open i{
+.tree-title i.open{
 	background: url(../img/folder_jt2.png) no-repeat 2px 6px;
 }
-.open span{
-	background: url(../img/s_folder1.png) no-repeat 28px 9px;
-}
-.tree-ico-none i{
+.tree-title i.noImg{
 	background:none;
 }
 .breadmenu{

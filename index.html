@@ -49,20 +49,20 @@
         </header>
         <section id="section">
             <div class="tree-menu" class="fix" onselectstart="return false;">
-                 <ul>
-                    <li>
-                        <div class="tree-title tree-ico close">
-                            <span><i></i>微云</span>
-                        </div>
-                        <ul>
-                            <li>
-                                <div class="tree-title tree-ico close">
-                                    <span><i></i>我的音乐</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                <!-- <ul>
+                   <li>
+                       <div class="tree-title tree-ico close">
+                           <span><i></i>微云</span>
+                       </div>
+                       <ul>
+                           <li>
+                               <div class="tree-title tree-ico close">
+                                   <span><i></i>我的音乐</span>
+                               </div>
+                           </li>
+                       </ul>
+                   </li>
+               </ul> -->
             </div>
             <div class="folder-content">
                 <div class="breadmenu">
@@ -125,9 +125,11 @@
     <script src="js/content/breadmenu.js"></script>
     <script src="js/content/folders.js"></script>
     <script src="js/content/selectBox.js"></script>
-    <script src="js/content/createFolder.js"></script>
-    <script src="js/content/deleteFolders.js"></script>
     <script src="js/content/tree.js"></script>
+    <script src="js/compute/createFolder.js"></script>
+    <script src="js/compute/deleteFolders.js"></script>
+    <script src="js/compute/moveFolders.js"></script>
+    <script src="js/compute/renameFolder.js"></script>
 <script>
     /*
     1.渲染数据
@@ -143,6 +145,11 @@
         与框碰到的文件夹都选中
         鼠标抬起时选中的文件夹保持勾选
     6.新建文件夹
+    7.删除文件夹
+    8.生成左边树导航
+    9.移动文件夹
+
+    待改善：页面为空时新建文件夹
     */
 </script>
 </body>

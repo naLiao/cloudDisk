@@ -5,6 +5,9 @@ const create = document.getElementById('create');
 create.onclick = function (ev) {
     let createId = +new Date;
     let num = parseFloat(breadNav.getElementsByTagName('span')[0].id);  //获取当前num
+    if(!t.getChild(num)){
+        fEmpty.style.display = 'none';
+    }
 
     //创建一个虚拟的DOM元素，让用户操作文件夹名，先不进数据
     let div = document.createElement('div');
@@ -29,7 +32,7 @@ create.onclick = function (ev) {
             如果多个新建文件夹就给加后缀 */
         let val = input.value;
         let arr = t.getChild(num);
-        if(arr.some(e=>e.title==val)){
+        if(arr && arr.some(e=>e.title==val)){
             //******************************重名情况可能要更改
             input.select();
             input.focus();
@@ -42,6 +45,8 @@ create.onclick = function (ev) {
                 "checked":false
             };
             render(num);
+            renderTree();
+            t.tipAppear('创建成功');
         }
     }
 }

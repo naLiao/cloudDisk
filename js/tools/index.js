@@ -61,5 +61,36 @@ let t = {
         }else{
             return true;
         }
+    },
+    selectedData(){
+        let num = parseFloat(breadNav.getElementsByTagName('span')[0].id);  //获取当前num
+        let arr = t.getChild(num);
+        if(!arr) return false;
+        arr = arr.filter(e=>e.checked==true);  //当前选中的文件夹对应的数据集合
+        if(arr.length) return arr;
+        return false;
+    },
+    treeHtml(num,paddingNum) {
+        let child = t.getChild(num);
+        if(!child) return '';
+        paddingNum++;
+        let html = `<ul style="padding-left:${paddingNum*6}px">`;
+        child.forEach(e=>{
+            html += `<li>
+             <div class="tree-title">
+                  <span data-id="${e.id}" class="${t.getChild(e.id)? 'open' : ''}"><i class="${t.getChild(e.id)? 'open': 'noImg'}"></i>${e.title}</span>
+             </div>
+             ${t.treeHtml(e.id,paddingNum)}
+             </li>`;
+    })
+        html += `</ul>`;
+        return html;
+    },
+    tipAppear (str){
+        tipText.innerHTML = str;
+        fullTipBox.style.top = '0px';
+        setTimeout(function (args) {
+            fullTipBox.style.top = '-40px';
+        },1000)
     }
 }
