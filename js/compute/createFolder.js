@@ -11,7 +11,7 @@ create.onclick = function (ev) {
 
     //创建一个虚拟的DOM元素，让用户操作文件夹名，先不进数据
     let div = document.createElement('div');
-    div.className = 'file-item ';
+    div.className = `${t.modeLine? 'file-tr':'file-item'}`;
     let img = document.createElement('img');
     img.src = "img/folder-b.png";
     let input = document.createElement('input');

@@ -1,5 +1,6 @@
 //这里面集合了所有用到的工具函数
 let t = {
+    modeLine:false,
     getChild(num) {
         let newArr = [];
         for(let attr in data){

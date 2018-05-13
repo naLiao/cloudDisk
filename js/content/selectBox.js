@@ -12,7 +12,7 @@ folders.onmousedown = function (ev) {
     div.className = 'kuang';
     folderContent.appendChild(div);
 
-    const divs = folders.getElementsByClassName('file-item');
+    const divs = folders.children;
     let len = divs.length;
     let arr = t.getChild(0);
 
@@ -34,7 +34,7 @@ folders.onmousedown = function (ev) {
             onOff = t.collision(div,divs[i]);
             data[divs[i].id].checked = onOff;
 
-            divs[i].className = 'file-item';
+            divs[i].className = `${t.modeLine? 'file-tr':'file-item'}`;
             divs[i].className += onOff? ' hov':'';
             divs[i].getElementsByTagName('i')[0].className = onOff?'checked':'';
             checkAll.className = arr.every(e=>e.checked) ? 'checked':'';

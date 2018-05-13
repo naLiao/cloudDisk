@@ -29,7 +29,7 @@ function render(num) {
     //根据子集数据生成文件夹
     arr.forEach(e=>{
         let div = document.createElement('div');
-        div.className = 'file-item ' + `${e.checked? 'hov':''}`;
+        div.className = `${t.modeLine? 'file-tr':'file-item'}` + `${e.checked? ' hov':''}`;
         div.id = e.id;
         let img = document.createElement('img');
         img.src = "img/folder-b.png";
