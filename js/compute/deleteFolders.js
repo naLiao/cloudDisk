@@ -30,7 +30,19 @@ tanbox.onclick = function (ev) {
             delete data[e.id];  //删除数据中的选中数据集合
         });
 
-        let num = parseFloat(breadNav.getElementsByTagName('span')[0].id);  //获取当前num
+        let num = parseFloat(breadNav.getElementsByTagName('span')[0].id);
+        let arr = t.getChild(num);
+        data[num].newFolderArr = [];  //刷新现在的新建文件夹数组
+        console.log(arr);
+        arr.forEach(e=>{
+            if(typeof(e.newIndex)==='number'&& !isNaN(e.newIndex)){
+                data[num].newFolderArr.push(e.newIndex);
+                data[num].newFolderArr.sort();
+            }
+        })
+        console.log(data[num].newFolderArr);
+
+
         render(num);  //渲染文件夹
         renderTree();
     }

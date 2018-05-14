@@ -32,26 +32,32 @@ modelTree.onclick = function (ev) {  //给移动框中加点击事件
         //获取要移动的所有数据集合，修改数据的pid，重新渲染文件夹
         let num = parseFloat(breadNav.getElementsByTagName('span')[0].id);  //获取当前num
         let selectArr = t.selectedData();  //这里肯定不是空的，否则不会出现移动框
+        let moveToArr = t.getChild(pId);
         let moveLine = [];
         selectArr.forEach(e=>{
             moveLine = moveLine.concat(e,t.getChilds(e.id));
         })
 
         //修改数据的pid
+        console.log(moveToArr);
+        console.log(selectArr);
         selectArr.forEach(ee=>{
-            if(moveLine.every(e=>e.id != pId)){
-                selectArr.forEach(e=>e.checked=false);
-                data[ee.id].pid = pId;
+            if(moveToArr.every(e=>e.title !== ee.title)){
+                if(moveLine.every(e=>e.id != pId)){
+                    selectArr.forEach(e=>e.checked=false);
+                    data[ee.id].pid = pId;
+                    render(num);
+                    renderTree();
+                    t.tipAppear('移动成功');
+                }else{
+                    t.tipAppear('不能移这里哦');
+                    return;
+                }
             }else{
-                tipText.innerHTML = '不能移到这里哦';
-                fullTipBox.style.top = '0px';
-                setTimeout(function (args) {
-                    fullTipBox.style.top = '-40px';
-                },1000)
+                t.tipAppear('文件名冲突');
+                return;
             }
         })
-        render(num);
-        renderTree();
-        t.tipAppear('移动成功');
+
     }
 }

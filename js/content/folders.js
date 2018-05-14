@@ -47,6 +47,7 @@ function render(num) {
         }
 
         img.ondblclick = function () {  //双击进入文件夹
+            if(t.naming) return;
             arr.forEach(e=>e.checked=false);
             render(e.id);
             renderNav(e.id);

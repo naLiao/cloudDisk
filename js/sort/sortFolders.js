@@ -25,8 +25,8 @@ let tmp = {};
 for(let attr in sortedArr){
     tmp[sortedArr[attr]] = data[sortedArr[attr]];
 }
-console.log(sortedArr);
-console.log(tmp);
+// console.log(sortedArr);
+// console.log(tmp);
 
 for(let i=0;i<len;i++){
     lis[i].onclick = function (ev) {
