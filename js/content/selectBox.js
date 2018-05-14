@@ -32,7 +32,7 @@ folders.onmousedown = function (ev) {
         for(let i=0;i<len;i++){  //不停地循环所有当前文件夹，与框碰到的就加样式
             let onOff;
             onOff = t.collision(div,divs[i]);
-            data[divs[i].id].checked = onOff;
+            if(data[divs[i].id]) data[divs[i].id].checked = onOff;
 
             divs[i].className = `${t.modeLine? 'file-tr':'file-item'}`;
             divs[i].className += onOff? ' hov':'';

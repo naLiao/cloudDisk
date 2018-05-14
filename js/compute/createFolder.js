@@ -1,8 +1,14 @@
 const create = document.getElementById('create');
+let naming = false;
 
 //点击创建时先创建DOM元素，可以修改名字，失焦的时候再放进数据里
 
 create.onclick = function (ev) {
+    if(naming) {
+        // let v = document.querySelector('.folders').lastElementChild.getElementsByTagName('input');
+        // v.focus();
+        // v.select();
+    };
     let createId = +new Date;
     let num = parseFloat(breadNav.getElementsByTagName('span')[0].id);  //获取当前num
     if(!t.getChild(num)){
@@ -23,6 +29,7 @@ create.onclick = function (ev) {
     div.appendChild(input);
     div.appendChild(i);
     folders.appendChild(div);
+    naming = true;
 
     input.select();
     input.onblur = function (ev) {
@@ -46,6 +53,7 @@ create.onclick = function (ev) {
             };
             render(num);
             renderTree();
+            naming = false;
             t.tipAppear('创建成功');
         }
     }
