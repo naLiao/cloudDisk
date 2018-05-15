@@ -30,6 +30,7 @@ for(let attr in sortedArr){
 
 for(let i=0;i<len;i++){
     lis[i].onclick = function (ev) {
+        if(t.naming) return;
         let num = parseFloat(breadNav.getElementsByTagName('span')[0].id);
         let arr = t.getChild(num);
         for(let i=0;i<len;i++){

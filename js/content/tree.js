@@ -7,6 +7,7 @@ function renderTree() {
     const spans = treeMenu.getElementsByTagName('span');
     for(let i=0;i<spans.length;i++){
         spans[i].onclick = function (ev) {
+            if(t.naming) return;
             for(let i=0;i<spans.length;i++){
                 spans[i].style.backgroundColor = '';
             }

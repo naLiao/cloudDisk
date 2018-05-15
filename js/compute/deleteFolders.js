@@ -5,6 +5,7 @@ const tipText = document.getElementById('tipText');
 const confBtns = document.querySelector('.conf-btn');
 
 del.onclick = function (ev) {
+    if(t.naming) return;
     let selectArr = t.selectedData();
     if(selectArr){  //确定删除框出现，点击事件可以操作
         tanbox.style.display = 'block';
@@ -31,17 +32,18 @@ tanbox.onclick = function (ev) {
         });
 
         let num = parseFloat(breadNav.getElementsByTagName('span')[0].id);
+
+
         let arr = t.getChild(num);
         data[num].newFolderArr = [];  //刷新现在的新建文件夹数组
-        console.log(arr);
         arr.forEach(e=>{
             if(typeof(e.newIndex)==='number'&& !isNaN(e.newIndex)){
                 data[num].newFolderArr.push(e.newIndex);
                 data[num].newFolderArr.sort();
+                // console.log(data[num].newFolderArr);
             }
         })
         console.log(data[num].newFolderArr);
-
 
         render(num);  //渲染文件夹
         renderTree();

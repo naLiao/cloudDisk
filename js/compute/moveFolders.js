@@ -5,6 +5,7 @@ const Cspans = content.getElementsByTagName('span');
 let pId;
 
 remove.onclick = function (ev) {
+    if(t.naming) return;
     let selectArr = t.selectedData();
     if(!selectArr){  //弹出提示框，过一会自动收回
         t.tipAppear('您还没选文件哦');
@@ -39,25 +40,28 @@ modelTree.onclick = function (ev) {  //给移动框中加点击事件
         })
 
         //修改数据的pid
-        console.log(moveToArr);
-        console.log(selectArr);
+        let rlt = selectArr.every(e=>{
+            moveToArr.every(ee=>{
+                e.title !== ee.title;
+            })
+        })
+        if(!rlt){
+            t.tipAppear('文件名冲突');
+            console.log(selectArr,moveToArr,rlt);
+            return;
+        }
+
         selectArr.forEach(ee=>{
-            if(moveToArr.every(e=>e.title !== ee.title)){
-                if(moveLine.every(e=>e.id != pId)){
-                    selectArr.forEach(e=>e.checked=false);
-                    data[ee.id].pid = pId;
-                    render(num);
-                    renderTree();
-                    t.tipAppear('移动成功');
-                }else{
-                    t.tipAppear('不能移这里哦');
-                    return;
-                }
+            if(moveLine.every(e=>e.id != pId)){
+                selectArr.forEach(e=>e.checked=false);
+                data[ee.id].pid = pId;
+                render(num);
+                renderTree();
+                t.tipAppear('移动成功');
             }else{
-                t.tipAppear('文件名冲突');
+                t.tipAppear('不能移这里哦');
                 return;
             }
         })
-
     }
 }

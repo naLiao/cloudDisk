@@ -42,15 +42,18 @@ function render(num) {
         i.className = e.checked ? 'checked' : '';
 
         i.onclick = function (ev) {  //给勾选框加点击事件
-            e.checked = !e.checked;
-            render(num);
+            if(!t.naming){
+                e.checked = !e.checked;
+                render(num);
+            }
         }
 
         img.ondblclick = function () {  //双击进入文件夹
-            if(t.naming) return;
-            arr.forEach(e=>e.checked=false);
-            render(e.id);
-            renderNav(e.id);
+            if(!t.naming){
+                arr.forEach(e=>e.checked=false);
+                render(e.id);
+                renderNav(e.id);
+            }
         }
 
         div.appendChild(img);
@@ -63,8 +66,10 @@ function render(num) {
 
     //点击全选框勾选所有文件
     checkAll.onclick = function (ev) {
-        let rlt = checkAll.classList.toggle('checked');
-        arr.forEach(e=>e.checked = rlt);
-        render(num);
+        if(!t.naming){
+            let rlt = checkAll.classList.toggle('checked');
+            arr.forEach(e=>e.checked = rlt);
+            render(num);
+        }
     }
 }

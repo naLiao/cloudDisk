@@ -3,9 +3,7 @@ const create = document.getElementById('create');
 //点击创建时先创建DOM元素，可以修改名字，失焦的时候再放进数据里
 
 create.onclick = function (ev) {
-    if(t.naming) {
-        return;
-    };
+    if(t.naming) return;
 
     let createId = +new Date;
     let num = parseFloat(breadNav.getElementsByTagName('span')[0].id);
@@ -22,12 +20,15 @@ create.onclick = function (ev) {
     input.className = 'editor';
     input.style.display = 'block';
     input.value = '新建文件夹';
+
+
     let i = document.createElement('i');
     div.appendChild(img);
     div.appendChild(input);
     div.appendChild(i);
     folders.appendChild(div);
     t.naming = true;  //命名中不让点击新建文件夹
+    console.log(t.naming);
 
     input.select();
     input.onblur = function (ev) {
@@ -42,27 +43,31 @@ create.onclick = function (ev) {
         if(val==='新建文件夹'){  //如果是新建文件夹，要走新建文件夹命名流程
             let newFolderArr = data[num].newFolderArr;  //当前的新建文件夹数组
             let newIndex;
-            if(!newFolderArr.length){
-                val = '新建文件夹';  //如果是空数组，val值不变
-                newIndex = 0;
-            }
-            else{  //看数组中有没有空隙
-                function getIndex() {
-                    for(let i=0;i<newFolderArr.length;i++){
-                        if(newFolderArr[i+1]){
-                            if(  (newFolderArr[i]+1) != newFolderArr[i+1]   ){  //有空隙
-                                return newFolderArr[i]+1;
-                            }else{  //没有空隙，加到数组最后
-                                return newFolderArr.length;
-                            }
-                        }else{  //如果没有下一个，加到数组最后
+            //看数组中有没有空隙
+            function getIndex() {
+                if(!newFolderArr.length || newFolderArr[0] !== 0){
+                    return 0;
+                }
+                for(let i=0;i<newFolderArr.length;i++){
+                    if(newFolderArr[i+1]){
+                        if(  (newFolderArr[i]+1) != newFolderArr[i+1]   ){  //有空隙
+                            return newFolderArr[i]+1;
+                        }else{  //没有空隙，加到数组最后
                             return newFolderArr.length;
                         }
+                    }else{  //如果没有下一个，加到数组最后
+                        return newFolderArr.length;
                     }
                 }
-                newIndex = getIndex();
+            }
+            newIndex = getIndex();
+            console.log(newIndex);
+            if(newIndex===0){
+                val = '新建文件夹';
+            }else{
                 val = '新建文件夹(' + newIndex + ')';
-            }  //将当前文件夹数据添加到数据
+            }
+            //将当前文件夹数据添加到数据
             data[createId] = {
                 "id": createId,
                 "pid": num,

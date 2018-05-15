@@ -1,5 +1,6 @@
 const show_mode = document.querySelector('.show_mode');
 show_mode.onclick = function () {
+    if(t.naming) return;
     let num = parseFloat(breadNav.getElementsByTagName('span')[0].id);
     if(t.modeLine == false){
         this.classList.add('sel2');
