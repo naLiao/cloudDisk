@@ -6,18 +6,18 @@ var data = {
         "newFolderArr":[],
         "checked":false
     },
+    "2": {
+        "id": 2,
+        "pid": 0,
+        "title": "我的音乐",
+        "newFolderArr":[],
+        "checked":false
+    },
     "1": {
         "id": 1,
         "pid": 0,
         "title": "我的文档",
         "type": "file",
-        "newFolderArr":[],
-        "checked":false
-    },
-    "2": {
-        "id": 2,
-        "pid": 0,
-        "title": "我的音乐",
         "newFolderArr":[],
         "checked":false
     },

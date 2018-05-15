@@ -39,14 +39,19 @@ modelTree.onclick = function (ev) {  //给移动框中加点击事件
             moveLine = moveLine.concat(e,t.getChilds(e.id));
         })
 
-        //修改数据的pid
-        let rlt = selectArr.every(e=>{
-            moveToArr.every(ee=>{
-                e.title !== ee.title;
-            })
-        })
-        if(!rlt){
+        //所有文件名都不冲突时才可以移动，修改数据的pid
+        let rlt = false;
+        for(let i=0;i<selectArr.length;i++){
+            for(let j=0;j<moveToArr.length;j++){
+                if(selectArr[i].title===moveToArr[j].title){
+                    rlt = true;
+                }
+            }
+        }
+
+        if(rlt){
             t.tipAppear('文件名冲突');
+
             console.log(selectArr,moveToArr,rlt);
             return;
         }
@@ -63,5 +68,7 @@ modelTree.onclick = function (ev) {  //给移动框中加点击事件
                 return;
             }
         })
+
+
     }
 }
