@@ -26,8 +26,7 @@ rename.onclick = function (ev) {
 
             if(val === nameInit){  //名字没有修改，取消选中,直接返回
                 data[selectArr[0].id].checked = false;
-                span.style.display = 'block';
-                input.style.display = 'none';
+                render(num);
                 t.naming = false;
                 return;  //----------------------------------------------------流程结束1
             }

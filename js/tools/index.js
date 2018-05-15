@@ -88,11 +88,15 @@ let t = {
         html += `</ul>`;
         return html;
     },
+    tipOn:false,
     tipAppear (str){
+        if(t.tipOn) return;
+        t.tipOn = true;
         tipText.innerHTML = str;
         fullTipBox.style.top = '0px';
         setTimeout(function (args) {
             fullTipBox.style.top = '-40px';
+            t.tipOn = false;
         },1000)
     }
 }

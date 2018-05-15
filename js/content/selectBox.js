@@ -2,6 +2,10 @@
 const folderContent = document.querySelector('.folder-content');
 const section1 = document.getElementById('section');
 
+document.ondblclick = function (ev) {
+    ev.preventDefault();
+}
+
 folders.onmousedown = function (ev) {
     if(ev.target.className !== 'folders') return;
     let bX = ev.pageX;
